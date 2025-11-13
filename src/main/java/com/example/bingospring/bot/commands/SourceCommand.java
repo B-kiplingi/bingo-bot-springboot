@@ -34,8 +34,6 @@ public class SourceCommand implements CommandHandler {
         serverService.save(server);
     }
 
-
-
     @Override
     public String getCommandName() {
         return "bingo-source";
