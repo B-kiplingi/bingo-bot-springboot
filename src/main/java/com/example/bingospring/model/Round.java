@@ -14,6 +14,9 @@ public class Round {
     @ManyToOne
     private Server server;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "round_items", joinColumns = @JoinColumn(name = "round_id"))
+    @Column(name = "item")
     private List<String> items;
     private long winnerId;
 
