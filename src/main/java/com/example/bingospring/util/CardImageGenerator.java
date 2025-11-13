@@ -29,7 +29,7 @@ public class CardImageGenerator {
         g.fillRect(0, 0, width, height);
 
         // Draw column labels (A, B, C, D, E) at the top
-        Font labelFont = new Font("SansSerif", Font.BOLD, 18);
+        Font labelFont = FontLoader.loadAnyTtfFont(Font.BOLD, 18);
         g.setFont(labelFont);
         g.setColor(Color.BLACK);
         FontMetrics labelFm = g.getFontMetrics();
@@ -50,7 +50,7 @@ public class CardImageGenerator {
         }
 
         // Draw cells
-        Font font = new Font("SansSerif", Font.BOLD, 16);
+        Font font = FontLoader.loadAnyTtfFont(Font.BOLD, 16);
         g.setFont(font);
         FontMetrics fm = g.getFontMetrics();
 
