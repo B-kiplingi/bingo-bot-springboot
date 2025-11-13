@@ -23,7 +23,7 @@ public class FontLoader {
             return new Font("SansSerif", style, (int) size);
         }
 
-        File[] files = dataDir.listFiles((dir, name) -> {
+        File[] files = dataDir.listFiles((_, name) -> {
             String lower = name.toLowerCase();
             return lower.endsWith(".ttf") || lower.endsWith(".otf");
         });
@@ -59,12 +59,5 @@ public class FontLoader {
         // Fallback to default
         System.out.println("Falling back to SansSerif");
         return new Font("SansSerif", style, (int) size);
-    }
-
-    // Example usage
-    public static void main(String[] args) {
-        // Just load whatever .ttf is in /app/data/
-        Font font = loadAnyTtfFont(Font.BOLD, 16f);
-        System.out.println("Using font: " + font.getFamily());
     }
 }

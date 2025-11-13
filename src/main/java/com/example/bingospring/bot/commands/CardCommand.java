@@ -1,16 +1,12 @@
 package com.example.bingospring.bot.commands;
 
 import com.example.bingospring.bot.Validator;
-import com.example.bingospring.model.Card;
-import com.example.bingospring.model.Round;
-import com.example.bingospring.model.Server;
 import com.example.bingospring.service.CardService;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
-import java.util.List;
 import java.util.Optional;
 
 @Component
