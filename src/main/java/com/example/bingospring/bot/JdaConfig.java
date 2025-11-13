@@ -14,9 +14,11 @@ public class JdaConfig {
     private String token;
 
     private final BotListener listener;
+    private final CommandRegistrar registrar;
 
-    public JdaConfig(BotListener listener) {
+    public JdaConfig(BotListener listener,  CommandRegistrar registrar) {
         this.listener = listener;
+        this.registrar = registrar;
     }
 
     @Bean
@@ -24,7 +26,7 @@ public class JdaConfig {
         System.out.println("Starting JDA...");
 
         JDA jda = JDABuilder.createDefault(token)
-                .addEventListeners(listener)
+                .addEventListeners(listener, registrar)
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .build();
 
