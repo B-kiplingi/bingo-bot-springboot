@@ -12,6 +12,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static com.example.bingospring.util.ItemPicker.pick;
+
 @Service
 public class RoundServiceImpl implements RoundService {
     private final RoundRepository roundRepository;
@@ -33,21 +35,5 @@ public class RoundServiceImpl implements RoundService {
     @Override
     public void save(Round round) {
         roundRepository.save(round);
-    }
-
-    private static List<String> pick(List<String> pool, int amount) {
-        if (pool.size() < amount) {
-            throw new IllegalArgumentException("Pool too small");
-        }
-        List<String> result = new ArrayList<>();
-
-        List<String> shuffledPool = new ArrayList<>(pool);
-
-        Collections.shuffle(shuffledPool);
-
-        for (int i = 0; i < amount; i++) {
-            result.add(shuffledPool.get(i));
-        }
-        return result;
     }
 }

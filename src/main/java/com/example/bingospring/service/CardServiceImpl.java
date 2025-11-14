@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import static com.example.bingospring.util.CardImageGenerator.generateCardImage;
+import static com.example.bingospring.util.ItemPicker.pick;
 
 @Service
 public class CardServiceImpl implements CardService {
@@ -34,8 +36,9 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public Card createCard(Round round, long userId) {
-        List<String> items = round.getItems();
+        List<String> items = new ArrayList<>(round.getItems());
         String[][] layout = new String[5][5];
+        Collections.shuffle(items);
         for (int i = 0; i < 25; i++) {
             layout[i / 5][i % 5] = items.get(i);
         }
