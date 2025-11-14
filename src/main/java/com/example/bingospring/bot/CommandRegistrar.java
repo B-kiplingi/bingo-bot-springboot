@@ -19,13 +19,13 @@ public class CommandRegistrar extends ListenerAdapter {
         jda.upsertCommand("bingo-join", "Join the current bingo round").queue();
         jda.upsertCommand("bingo-card", "Show your bingo card").queue();
         jda.upsertCommand("bingo-check", "Mark an item on your bingo card")
-                .addOptions(new OptionData(OptionType.STRING, "item", "The item coordinates to mark", true))
+                .addOptions(new OptionData(OptionType.STRING, "item", "The item coordinates to mark, e.g. B3", true))
                 .queue();
-        jda.upsertCommand("bingo-uncheck", "Made a mistake? you can uncheck a field with this command")
-                .addOptions(new OptionData(OptionType.STRING, "item", "The item coordinates to unmark", true))
+        jda.upsertCommand("bingo-uncheck", "Made a mistake? you can uncheck a field with this command, e.g. B3")
+                .addOptions(new OptionData(OptionType.STRING, "coords e.g. B3", "The item coordinates to unmark", true))
                 .queue();
         jda.upsertCommand("bingo-source", "Choose which channel to load the pool from")
-                .addOptions(new OptionData(OptionType.STRING, "channel", "The channel to load the pool from", true))
+                .addOptions(new OptionData(OptionType.STRING, "coords e.g. B3", "The channel to load the pool from", true))
                 .queue(
                         success -> System.out.println("bingo-source command registered successfully"),
                         error -> System.out.println("Error registering bingo-source command: " + error.getMessage())
