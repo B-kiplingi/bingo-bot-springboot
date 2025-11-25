@@ -11,12 +11,10 @@ import java.util.Optional;
 
 @Component
 public class SourceCommand implements CommandHandler {
-    Validator validator;
     ServerService serverService;
 
     @Autowired
     public SourceCommand(Validator validator,  ServerService serverService) {
-        this.validator = validator;
         this.serverService = serverService;
     }
 
@@ -24,9 +22,7 @@ public class SourceCommand implements CommandHandler {
     public void handle(SlashCommandInteractionEvent event) {
         String source = event.getOption("channel").getAsString();
 
-        Optional<Server> opt = validator.validateServer(event);
-        if (opt.isEmpty()) return;
-        Server server = opt.get();
+        Server server = serverService.getOrCreateServer(event.getGuild().getIdLong());
 
         event.reply("Setting the channel " + source + " as bingo pool source.").queue();
 
