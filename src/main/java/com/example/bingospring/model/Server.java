@@ -2,9 +2,6 @@ package com.example.bingospring.model;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Table
 public class Server {
@@ -16,6 +13,7 @@ public class Server {
     @OneToOne
     private Round currentRound;
     private boolean active;
+    private int poolSize;
 
     protected Server() {}
 
@@ -54,5 +52,13 @@ public class Server {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public int getPoolSize() {
+        return poolSize;
+    }
+
+    public void setPoolSize(int poolSize) {
+        this.poolSize = poolSize;
     }
 }

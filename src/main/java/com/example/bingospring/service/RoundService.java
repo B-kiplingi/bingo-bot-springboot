@@ -6,6 +6,6 @@ import com.example.bingospring.model.Server;
 import java.util.List;
 
 public interface RoundService {
-    Round createRound(Server server, List<String> pool);
+    Round createRound(Server server, List<String> pool, int poolSize);
     void save(Round round);
 }

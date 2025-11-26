@@ -24,9 +24,9 @@ public class RoundServiceImpl implements RoundService {
     }
 
     @Override
-    public Round createRound(Server server, List<String> pool) {
+    public Round createRound(Server server, List<String> pool, int poolSize) {
         Round round = new Round();
-        round.setItems(pick(pool, 25));
+        round.setItems(pick(pool, poolSize));
         round.setServer(server);
         roundRepository.save(round);
         return round;

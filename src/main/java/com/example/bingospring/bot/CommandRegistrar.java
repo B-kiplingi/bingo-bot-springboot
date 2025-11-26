@@ -25,7 +25,9 @@ public class CommandRegistrar extends ListenerAdapter {
                         Commands.slash("bingo-uncheck", "Undo marking a field, e.g. B3")
                                 .addOption(OptionType.STRING, "item", "The item coordinates to unmark", true),
                         Commands.slash("bingo-source", "Choose which channel to load the pool from")
-                                .addOption(OptionType.STRING, "channel", "The channel to load the pool from", true)
+                                .addOption(OptionType.STRING, "channel", "The channel to load the pool from", true),
+                        Commands.slash("bingo-pool-size", "Set the round pool size.")
+                                .addOption(OptionType.INTEGER, "pool-size", "The number of items to pick from the pool channel when creating a round, must be at least 25.", true)
                 )
                 .queue(
                         success -> System.out.println("Global commands updated."),

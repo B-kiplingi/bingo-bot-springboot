@@ -31,7 +31,7 @@ public class StartCommand implements CommandHandler {
 
         var channels = event.getGuild().getTextChannelsByName(name, true);
         if (channels.isEmpty()) {
-            event.reply("❌ No channel named " + name + " found!").setEphemeral(true).queue();
+            event.reply("Error, no channel named " + name + " found!").setEphemeral(true).queue();
             return;
         }
 
@@ -39,17 +39,22 @@ public class StartCommand implements CommandHandler {
 
         // Check if enough items loaded
         if (pool.size() < 25) {
-            event.reply("❌ Not enough items in pool (need at least 25, found " + pool.size() + ")").setEphemeral(true).queue();
+            event.reply("Error, not enough items in pool (need at least 25, found " + pool.size() + ")").setEphemeral(true).queue();
             return;
         }
 
-        Round round = roundService.createRound(server, pool);
+        //make sure the round pool size is between 25 and the number of items in the pool channel
+        int poolSize = server.getPoolSize();
+        poolSize = Math.max(poolSize, 25);
+        poolSize = Math.min(poolSize, pool.size());
+
+        Round round = roundService.createRound(server, pool, poolSize);
 
         server.setActive(true);
         server.setCurrentRound(round);
         serverService.save(server);
 
-        event.reply("✅ New bingo round started with " + pool.size() + " items! Use `/bingo-join` to get your card!").queue();
+        event.reply("New bingo round started with " + poolSize + " out of " + pool.size() + " items! Use `/bingo-join` to get your card!").queue();
     }
 
     @Override
