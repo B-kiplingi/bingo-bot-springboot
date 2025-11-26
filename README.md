@@ -53,7 +53,7 @@ Once you’ve got your pool filled with items, it's time to kick off a round:
 
 Start the round: `/bingo-start`
 
-The bot will randomly select 25 items from your pool and get the round going.
+The bot will randomly select the specified number of items from your pool and get the round going.
 
 ### 3. Playing the game
 Once the round's started everything is ready for you to join the round.
